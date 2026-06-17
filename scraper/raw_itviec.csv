@@ -1,0 +1,16 @@
+﻿title,company,location,skills,salary_raw,experience,source,date_scraped
+Senior Python Developer,FPT Software,Ha Noi,"Python, Django, PostgreSQL, Docker, AWS","1,500 - 3,000 USD",3-5 years,ITviec,2026-06-05
+React Frontend Developer,VNG Corporation,Ho Chi Minh,"JavaScript, React, TypeScript, Redux, Git",Negotiable,2-4 years,ITviec,2026-05-26
+IC Design Engineer,Intel Vietnam,Ho Chi Minh,"Verilog, SystemVerilog, Python, C++","1,500 - 3,000 USD",2-5 years,ITviec,2026-06-10
+DevOps Engineer,Grab Vietnam,Ha Noi,"Docker, Kubernetes, AWS, Jenkins, Terraform","20,000,000 - 35,000,000 VND",3-5 years,ITviec,2026-06-14
+Java Backend Developer,KMS Technology,Ha Noi,"Java, Spring Boot, MySQL, Docker, Microservices","30,000,000 - 50,000,000 VND",2-4 years,ITviec,2026-06-11
+Data Scientist,Shopee Vietnam,Da Nang,"Python, TensorFlow, Pandas, SQL, Machine Learning","20,000,000 - 35,000,000 VND",2-4 years,ITviec,2026-05-23
+Embedded Software Engineer,Bosch Vietnam,Ho Chi Minh,"C, C++, RTOS, ARM, Linux","1,500 - 3,000 USD",1-3 years,ITviec,2026-06-12
+Full-stack Developer,NashTech Vietnam,Ha Noi,"JavaScript, Node.js, React, MongoDB, Docker",Negotiable,2-4 years,ITviec,2026-06-14
+Cloud Solutions Architect,CMC Global,Da Nang,"AWS, Azure, Terraform, Kubernetes, Python","25,000,000 - 45,000,000 VND",5-7 years,ITviec,2026-06-07
+FPGA Design Engineer,Viettel Group,Da Nang,"Verilog, FPGA, VHDL, C++, Linux","20,000,000 - 35,000,000 VND",2-4 years,ITviec,2026-06-09
+Mobile Developer (iOS),TMA Solutions,Bac Ninh,"Swift, iOS, Git, REST API, Firebase","20,000,000 - 35,000,000 VND",1-3 years,ITviec,2026-06-08
+Machine Learning Engineer,VNG Corporation,Da Nang,"Python, PyTorch, NLP, Docker, AWS",Competitive,3-5 years,ITviec,2026-05-27
+QA Automation Engineer,FPT Software,Ha Noi,"Python, Selenium, Java, Git, Agile","25,000,000 - 45,000,000 VND",1-3 years,ITviec,2026-06-10
+Blockchain Developer,KMS Technology,Ha Noi,"Solidity, JavaScript, Go, Docker, Web3","25,000,000 - 45,000,000 VND",2-4 years,ITviec,2026-05-23
+Site Reliability Engineer,Grab Vietnam,Ha Noi,"Go, Kubernetes, Docker, AWS, Prometheus","1,500 - 3,000 USD",3-5 years,ITviec,2026-06-10
