@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Job Market Intelligence System</title>
+    <style>
+        :root { --bg-dark: #0f172a; --sidebar-bg: #1e293b; --card-bg: #334155; --text-main: #f8fafc; --text-muted: #94a3b8; --accent-green: #10b981; --accent-blue: #3b82f6; --accent-warning: #f59e0b; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: var(--bg-dark); color: var(--text-main); display: flex; height: 100vh; overflow: hidden; }
+        .sidebar { width: 260px; background-color: var(--sidebar-bg); padding: 20px; display: flex; flex-direction: column; border-right: 1px solid #475569; }
+        .logo { font-size: 1.2rem; font-weight: bold; color: var(--accent-green); margin-bottom: 40px; text-align: center; letter-spacing: 1px; border-bottom: 1px solid #475569; padding-bottom: 20px; }
+        .menu-item { padding: 15px 20px; margin-bottom: 10px; border-radius: 8px; cursor: pointer; transition: all 0.3s ease; color: var(--text-muted); font-weight: 500; }
+        .menu-item:hover, .menu-item.active { background-color: var(--accent-blue); color: #ffffff; }
+        .main-content { flex: 1; display: flex; flex-direction: column; overflow-y: auto; }
+        .topbar { height: 70px; background-color: var(--sidebar-bg); display: flex; align-items: center; justify-content: space-between; padding: 0 30px; border-bottom: 1px solid #475569; }
+        .topbar .status { font-size: 0.9rem; color: var(--text-muted); }
+        .topbar .status span { color: var(--accent-green); font-weight: bold; }
+        .dashboard-container { padding: 30px; }
+        .header-title { margin-bottom: 20px; font-size: 1.8rem; }
+        .input-section { background-color: var(--card-bg); padding: 25px; border-radius: 12px; margin-bottom: 30px; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
+        .input-section h3 { margin-bottom: 15px; color: var(--text-muted); }
+        .input-group { display: flex; gap: 15px; }
+        input[type="text"] { flex: 1; padding: 12px 15px; border-radius: 6px; border: 1px solid #475569; background-color: var(--bg-dark); color: #fff; font-size: 1rem; }
+        button { padding: 12px 25px; background-color: var(--accent-blue); color: white; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; transition: background 0.3s; }
+        button:hover { background-color: #2563eb; }
+        .results-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; display: none; /* Ẩn kết quả lúc đầu */ }
+        .card { background-color: var(--card-bg); padding: 25px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
+        .card h3 { border-bottom: 1px solid #475569; padding-bottom: 10px; margin-bottom: 20px; color: var(--accent-green); }
+        .match-rate { font-size: 3rem; font-weight: bold; color: var(--accent-green); margin-bottom: 10px; }
+        ul { list-style-type: none; }
+        ul li { margin-bottom: 12px; padding-left: 20px; position: relative; }
+        ul li::before { content: "•"; color: var(--accent-blue); position: absolute; left: 0; font-size: 1.5rem; top: -5px; }
+        .warning { color: var(--accent-warning); font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="logo">⚙️ IT JOB MARKET<br>INTELLIGENCE</div>
+        <div class="menu-item">📊 System Dashboard</div>
+        <div class="menu-item">🕷️ Scraper Engine (SP1)</div>
+        <div class="menu-item">🗄️ SQLite Database (SP2)</div>
+        <div class="menu-item active">🎯 Career Recommendation</div>
+        <div class="menu-item">📈 Market Analytics</div>
+    </aside>
+
+    <main class="main-content">
+        <header class="topbar">
+            <div class="status">Project Phase: <span>Sprint 1 - System Online</span></div>
+            <div class="user">Admin 👤</div>
+        </header>
+
+        <div class="dashboard-container">
+            <h1 class="header-title">Career Recommendation Module</h1>
+
+            <section class="input-section">
+                <h3>Enter Your Current Technical Skills</h3>
+                <div class="input-group">
+                    <input type="text" id="skillInput" placeholder="e.g., Python, C++, Verilog">
+                    <button id="analyzeBtn">Analyze Market Demand</button>
+                </div>
+            </section>
+
+            <section class="results-grid" id="resultSection">
+                <div class="card">
+                    <h3>Analysis Report</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 10px;">Target Industry: Integrated Circuit (IC) Design & Semiconductors</p>
+                    <div class="match-rate" id="displayMatchRate">0%</div>
+                    <p>Profile Matching Rate based on current JD Database.</p>
+
+                    <div style="margin-top: 20px; padding: 15px; background: rgba(245, 158, 11, 0.1); border-left: 4px solid var(--accent-warning); border-radius: 4px;">
+                        <span class="warning">⚠️ Skill Gap Detected:</span><br>
+                        Your profile is missing <b id="displayMissingSkill"></b>. This skill is highly requested.
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Personalized Learning Roadmap</h3>
+                    <ul>
+                        <li>
+                            <strong style="color: #fff;">Phase 1: Advanced Digital Logic</strong>
+                            <p style="color: var(--text-muted); font-size: 0.9rem;">Review logic gates, flip-flops, and state machines.</p>
+                        </li>
+                        <li>
+                            <strong style="color: #fff;">Phase 2: Master Missing Skills</strong>
+                            <p style="color: var(--text-muted); font-size: 0.9rem;">Focus on the specific technologies identified in the gap analysis.</p>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        document.getElementById('analyzeBtn').addEventListener('click', function() {
+            const skills = document.getElementById('skillInput').value;
+
+            fetch('/analyze', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ skills: skills })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if(data.error) {
+                    alert(data.error);
+                    return;
+                }
+                // Hiển thị khung kết quả
+                document.getElementById('resultSection').style.display = 'grid';
+                // Đổ dữ liệu từ Python vào HTML
+                document.getElementById('displayMatchRate').innerText = data.match_rate;
+                document.getElementById('displayMissingSkill').innerText = data.missing_skill;
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        });
+    </script>
+</body>
+</html>
