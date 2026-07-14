@@ -78,6 +78,18 @@ def get_jobs():
         return jsonify({"error": str(e)}), 500
 
 
+@app.route('/api/jobs/<int:job_id>', methods=['GET'])
+def get_job_detail(job_id):
+    """Get full details of a specific job."""
+    try:
+        job = db.get_job_by_id(job_id)
+        if job:
+            return jsonify(job)
+        return jsonify({"error": "Job not found"}), 404
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
 @app.route('/api/analyze', methods=['POST'])
 def analyze_skills():
     """Analyze user skills and return career recommendations."""

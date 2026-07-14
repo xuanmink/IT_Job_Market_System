@@ -260,6 +260,21 @@ class DBManager:
         self.cursor.execute(query, params)
         return [dict(row) for row in self.cursor.fetchall()]
 
+    def get_job_by_id(self, job_id):
+        """Get details for a single job by ID."""
+        self.cursor.execute('''
+            SELECT j.*, c.name as company, c.industry,
+                   GROUP_CONCAT(s.name, ', ') as skills
+            FROM Jobs j
+            LEFT JOIN Companies c ON j.company_id = c.id
+            LEFT JOIN JobSkills js ON j.id = js.job_id
+            LEFT JOIN Skills s ON js.skill_id = s.id
+            WHERE j.id = ?
+            GROUP BY j.id
+        ''', (job_id,))
+        row = self.cursor.fetchone()
+        return dict(row) if row else None
+
     def get_job_count(self):
         """Get total number of jobs."""
         self.cursor.execute('SELECT COUNT(*) FROM Jobs')
