@@ -10,12 +10,6 @@ import sys
 # Add project root to path
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-if sys.platform == 'win32' and hasattr(sys.stdout, 'reconfigure'):
-    try:
-        sys.stdout.reconfigure(encoding='utf-8')
-    except Exception:
-        pass
-
 from scraper.static_scraper import ITViecScraper
 from scraper.dynamic_scraper import DynamicScraper
 from database.db_manager import DBManager
@@ -84,24 +78,16 @@ def main():
     print(f"   Charts generated: {len(charts)}")
 
     # ── Step 5: Demo Recommendation ──────────────────────────────
-    print("\n🎯 [5/5] Running Multi-Factor Career Recommendation Demo...")
+    print("\n🎯 [5/5] Running Career Recommendation Demo...")
     recommender = CareerRecommender(db)
 
-    demo_skills = "Python, Docker, SQL, Git"
-    demo_certs = "AWS Certified Solutions Architect, TOEIC 750+"
-    demo_degree = "Đại học (Bachelor)"
-    demo_exp = "Mid"
-    print(f"\n   Demo Candidate Profile:")
-    print(f"   • Skills: {demo_skills}")
-    print(f"   • Certifications: {demo_certs}")
-    print(f"   • Degree: {demo_degree} | Level: {demo_exp}")
-    result = recommender.recommend(demo_skills, demo_certs, demo_degree, demo_exp)
-    print(f"\n   📊 Matching Results:")
-    print(f"   • Composite Match Rate: {result['match_rate']}")
-    print(f"   • Skill Match: {result['skill_match_rate']} | Cert Match: {result['cert_match_rate']} | Degree Match: {result['degree_match_rate']}")
-    print(f"   • Missing Skill to Learn: {result['missing_skill']}")
-    print(f"   • Missing Certification: {result['missing_cert']}")
-    print(f"   • Summary: {result['recommendation_summary']}")
+    demo_skills = "Python, C++, Verilog"
+    print(f"\n   Demo input skills: {demo_skills}")
+    result = recommender.recommend(demo_skills)
+    print(f"   Match Rate: {result['match_rate']}")
+    print(f"   Top Missing Skill: {result['missing_skill']}")
+    print(f"   Matched Skills: {', '.join(result['matched_skills'])}")
+    print(f"   Summary: {result['recommendation_summary']}")
 
     # ── Complete ─────────────────────────────────────────────────
     print("\n" + "=" * 65)
