@@ -1064,6 +1064,68 @@
             border: 1px solid var(--border);
             border-radius: var(--radius-md);
             padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .match-gauge {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 160px;
+            height: 160px;
+            margin: 0 auto 12px;
+        }
+
+        .match-gauge svg {
+            transform: rotate(-90deg);
+            display: block;
+        }
+
+        .gauge-bg {
+            fill: none;
+            stroke: rgba(255, 255, 255, 0.08);
+            stroke-width: 12;
+        }
+
+        .gauge-fill {
+            fill: none;
+            stroke: var(--accent-blue);
+            stroke-width: 12;
+            stroke-linecap: round;
+            transition: stroke-dashoffset 1s cubic-bezier(0.4, 0, 0.2, 1), stroke 0.3s ease;
+        }
+
+        .gauge-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+            width: 100%;
+        }
+
+        .gauge-value {
+            font-size: 2.2rem;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .gauge-label {
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
         }
 
         .sub-scores-grid {
@@ -1652,14 +1714,14 @@
                         <div class="match-dashboard-grid">
                             <!-- Gauge -->
                             <div class="match-gauge-box">
-                                <div class="match-gauge" style="width:160px; height:160px; margin-bottom:10px;">
+                                <div class="match-gauge">
                                     <svg width="160" height="160" viewBox="0 0 180 180">
                                         <circle class="gauge-bg" cx="90" cy="90" r="78"/>
                                         <circle class="gauge-fill" id="gaugeCircle" cx="90" cy="90" r="78"
                                                 stroke-dasharray="490" stroke-dashoffset="490"/>
                                     </svg>
                                     <div class="gauge-text">
-                                        <div class="gauge-value" id="gaugeValue" style="font-size:2.2rem;">0%</div>
+                                        <div class="gauge-value" id="gaugeValue">0%</div>
                                         <div class="gauge-label" data-i18n="res_overall_label">Điểm Tổng Thể</div>
                                     </div>
                                 </div>
